@@ -102,3 +102,71 @@ renderProductsList = () => {
 ---
 
 In the next commit, we will handle the logic to actually sort the products based on the selected option from the header.
+---
+# ✅ Commit 2: Passing Props to Components
+
+In this commit, we are focusing on **passing props to a child component** (`ProductsHeader`).
+
+We already have an array of options for sorting products. Now, we will pass this array as props to the `ProductsHeader` component.
+
+---
+
+## 📦 Sort Options Array
+
+```js
+const sortbyOptions = [
+  {
+    optionId: 'PRICE_HIGH',
+    displayText: 'Price (High-Low)',
+  },
+  {
+    optionId: 'PRICE_LOW',
+    displayText: 'Price (Low-High)',
+  },
+]
+```
+
+## 📌 Why use state for activeOptionId?
+Since activeOptionId will change over time when the user selects a different sort option, we should keep this value in the component's state.
+
+We know that anything that changes over time should be stored in the state.
+
+```js
+state = {
+  activeOptionId: sortbyOptions[0].optionId,
+  productsList: [],
+  isLoading: false,
+}
+```
+
+### Explanation:
+* activeOptionId: The currently selected sort option (initially the first option).
+
+* productsList: The list of products we will render.
+
+* isLoading: Used to show loading state while fetching products.
+
+### 📤 Passing Props to ProductsHeader
+
+Now we pass `sortbyOptions` and `activeOptionId` as props to the `ProductsHeader` component like this:
+
+```js
+
+const {productsList, activeOptionId} = this.state
+
+return (
+  <>
+    <ProductsHeader
+      sortbyOptions={sortbyOptions}
+      activeOptionId={activeOptionId}
+    />
+    <ul className="products-list">
+      {productsList.map(product => (
+        <ProductCard productData={product} key={product.id} />
+      ))}
+    </ul>
+  </>
+)
+
+```
+---

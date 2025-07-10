@@ -19,6 +19,7 @@ const sortbyOptions = [
 
 class AllProductsSection extends Component {
   state = {
+    activeOptionId: sortbyOptions[0].optionId,
     productsList: [],
     isLoading: false,
   }
@@ -58,10 +59,13 @@ class AllProductsSection extends Component {
   }
 
   renderProductsList = () => {
-    const {productsList} = this.state
+    const {productsList, activeOptionId} = this.state
     return (
       <>
-        <ProductsHeader />
+        <ProductsHeader
+          sortbyOptions={sortbyOptions}
+          activeOptionId={activeOptionId}
+        />
         <ul className="products-list">
           {productsList.map(product => (
             <ProductCard productData={product} key={product.id} />
