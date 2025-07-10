@@ -29,11 +29,12 @@ class AllProductsSection extends Component {
   }
 
   getProducts = async () => {
+    const {activeOptionId} = this.state
     this.setState({
       isLoading: true,
     })
     const jwtToken = Cookies.get('jwt_token')
-    const apiUrl = 'https://apis.ccbp.in/products'
+    const apiUrl = `https://apis.ccbp.in/products?sort_by=${activeOptionId}`
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -59,7 +60,7 @@ class AllProductsSection extends Component {
   }
 
   updateActiveOptionId = activeOptionId => {
-    this.setState({activeOptionId})
+    this.setState({activeOptionId}, this.getProducts)
   }
 
   renderProductsList = () => {

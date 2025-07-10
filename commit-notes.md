@@ -1,4 +1,5 @@
 
+
 # ✅ Lecture: Adding Sort by Price & React Icons
 
 # Commit 1: importing and using the component 
@@ -206,3 +207,83 @@ Now, we pass all required props including the callback to ProductsHeader:
 In the next commit, we will handle Step 2, where we'll call the API and fetch the sorted product list based on the selected sort option.
 
 ---
+
+---
+
+# ✅ Commit 4: API Call for Sorting the Products
+
+---
+
+## 🧐 Why Do We Need an API Call?
+
+Generally, **backend** is a more efficient and secure place to handle operations like sorting, filtering, and searching on data compared to doing it in the frontend.
+
+---
+
+## 🧩 How Do We Get Sorted Products from the Backend?
+
+We use **query parameters** in the API URL.
+
+For example:
+
+https://apis.ccbp.in/products?sort_by=PRICE_HIGH 
+
+Here, `sort_by=PRICE_HIGH` is the **query parameter**.
+
+---
+
+## 🧠 Getting the Selected Value from State
+
+We already have `activeOptionId` in our state which tracks the selected sort option:
+
+```js
+const {activeOptionId} = this.state
+```
+
+Using it, we modify the API URL dynamically:
+```js
+const apiUrl = `https://apis.ccbp.in/products?sort_by=${activeOptionId}`
+
+```
+
+## 🔁 When Should We Call the API?
+Currently, we are calling the `getProducts() `function inside `componentDidMount()`:
+
+```js
+componentDidMount() {
+  this.getProducts()
+}
+```
+But `componentDidMount()` is called only once, when the component is mounted.
+
+## ❗ Our Requirement:
+We want to re-fetch the products every time the user selects a new sort option (i.e., when the state changes).
+
+So, we should call the API whenever `activeOptionId is updated.
+
+## ✅ Solution: Call API Inside setState Callback
+If we write like this:
+```js
+updateActiveOptionId = activeOptionId => {
+  this.setState({
+    activeOptionId
+  })
+  this.getProducts()
+}
+```
+It won't work as expected because setState is asynchronous, meaning the state might not be updated before the API call is made.
+
+### 🛠️ Proper Way: Use setState Callback
+`setState` accepts a callback function which runs after the state has been updated.
+
+```js
+this.setState({property1: value1, ...}, callbackFunction)
+```
+So we update our function like this:
+
+```js
+updateActiveOptionId = activeOptionId => {
+  this.setState({activeOptionId}, this.getProducts)
+}
+```
+Now, getProducts will be called only after activeOptionId is updated!
