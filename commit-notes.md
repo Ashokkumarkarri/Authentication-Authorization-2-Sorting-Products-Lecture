@@ -170,3 +170,39 @@ return (
 
 ```
 ---
+# ✅ Commit 3: Sorting Functionality
+
+To make sorting work in our e-commerce app, we need to complete the following two steps:
+
+### ✅ Step 1: Update `activeOptionId` when the user selects a sort option
+
+### ⏳ Step 2: Fetch the sorted product list using the Get Products API
+
+---
+
+### 🔧 Step 1 – Handling the selected sort option
+
+We'll pass a callback function `updateActiveOptionId` as a prop to the `ProductsHeader` component.  
+This function will be triggered when the user changes the selected option in the dropdown.
+
+```js
+//this will update the state with the curren selected option
+updateActiveOptionId = activeOptionId => {
+  this.setState({activeOptionId: activeOptionId})
+}
+```
+Now, we pass all required props including the callback to ProductsHeader:
+
+```js
+<ProductsHeader
+  sortbyOptions={sortbyOptions}
+  activeOptionId={activeOptionId}
+  updateActiveOptionId={this.updateActiveOptionId}
+/>
+```
+
+⏭️ Next Commit:
+
+In the next commit, we will handle Step 2, where we'll call the API and fetch the sorted product list based on the selected sort option.
+
+---

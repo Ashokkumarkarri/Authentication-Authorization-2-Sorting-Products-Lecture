@@ -58,6 +58,10 @@ class AllProductsSection extends Component {
     }
   }
 
+  updateActiveOptionId = activeOptionId => {
+    this.setState({activeOptionId})
+  }
+
   renderProductsList = () => {
     const {productsList, activeOptionId} = this.state
     return (
@@ -65,6 +69,7 @@ class AllProductsSection extends Component {
         <ProductsHeader
           sortbyOptions={sortbyOptions}
           activeOptionId={activeOptionId}
+          updateActiveOptionId={this.updateActiveOptionId}
         />
         <ul className="products-list">
           {productsList.map(product => (
