@@ -3,6 +3,7 @@ import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 
 import ProductCard from '../ProductCard'
+import ProductsHeader from '../ProductsHeader'
 import './index.css'
 
 const sortbyOptions = [
@@ -60,7 +61,7 @@ class AllProductsSection extends Component {
     const {productsList} = this.state
     return (
       <>
-        <h1 className="products-heading">All Products</h1>
+        <ProductsHeader />
         <ul className="products-list">
           {productsList.map(product => (
             <ProductCard productData={product} key={product.id} />
