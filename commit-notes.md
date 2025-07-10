@@ -287,3 +287,77 @@ updateActiveOptionId = activeOptionId => {
 }
 ```
 Now, getProducts will be called only after activeOptionId is updated!
+
+
+---
+
+# ✅ Commit 5: Third-Party Package – React Icons
+
+---
+
+## 📦 npm Installation
+
+Install the package using the following command:
+
+```bash
+npm install react-icons
+```
+
+
+Official Docs: https://react-icons.github.io/react-icons/
+
+## 🎨 What is React Icons?
+react-icons is a third-party package that provides a bundle of popular icon libraries, such as:
+
+ * Bootstrap Icons
+
+  * Font Awesome
+
+  * Material Design Icons
+
+  * Feather Icons
+
+  * and many more...
+
+## 🧰 2.1 Installing React Icons
+To use icons from any of the above libraries in your React project, install react-icons using the command:
+
+```js
+npm install react-icons
+
+```
+
+## 📥 2.3 Importing React Icons
+Each icon library (category) has its own import path.
+
+The first letters of the icon indicate the category it belongs to.
+
+Example:
+If you're using a Font Awesome icon like FaSearch, you must import it like this:
+
+```js
+import { FaSearch } from 'react-icons/fa'
+
+
+```
+
+If you're using a Material Design icon like MdHome, use:
+
+```js
+import { MdHome } from 'react-icons/md'
+
+
+```
+
+To find the icon you want:
+
+  * Visit the official React Icons website.
+
+  * Search for the icon.
+
+  * Copy the import statement from the site.
+
+
+  -----
+
+  

@@ -1,3 +1,5 @@
+import {IoFilter} from 'react-icons/io5'
+
 import './index.css'
 
 const ProductsHeader = props => {
@@ -10,6 +12,7 @@ const ProductsHeader = props => {
     <div className="products-header">
       <h1 className="products-list-heading">All Products</h1>
       <div className="sort-by-container">
+        <IoFilter className="sort-by-icon" />
         <h1 className="sort-by">Sort by</h1>
         <select
           className="sort-by-select"
